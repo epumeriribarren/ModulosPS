@@ -13,6 +13,13 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 					array_push($parametros_mal, $key);
 				}
 			}
+
+			if ( !ereg("([0-9]{5})", $parametros['cpostal'])){
+				array_push($parametros_mal, 'cpostal');
+			}
+			if ( !ereg("([0-9]{9})", $parametros['telefono'])){
+				array_push($parametros_mal, 'telefono');
+			}
 		}
 		$form_fields = array(
 			array(
