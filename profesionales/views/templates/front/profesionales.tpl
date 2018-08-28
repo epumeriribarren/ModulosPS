@@ -19,6 +19,6 @@
 					{/if}
 				</campo>
 			{/foreach}
-			<input type="submit" value="Enviar" >
+			<input id="enviar" type="submit" value="Enviar" >
 		</form>
 	{/block}
