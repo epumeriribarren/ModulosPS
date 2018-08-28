@@ -1,7 +1,7 @@
 {extends file='page.tpl'}
 	{block name='page_content_container'}
 		<h2>Formulario para profesionales</h2>
-		<form action="/module/profesionales/profesionales?registrar_profesional" method="post">
+		<form id="pro" action="/module/profesionales/profesionales?registrar_profesional" method="post">
 			{foreach $parametros as $parametro}
 				<campo>
 					<titulo>{$parametro.titulo}</titulo>
