@@ -11,12 +11,12 @@ campo{
 }
 #derecha {
   width: 50%;
-  display: inline-block;
+  display: inline-table;
   height: 100%;
 }
 #izquierda {
   width: 40%;
-  display: inline-block;
+  display: inline-table;
   
 }
 #main {
