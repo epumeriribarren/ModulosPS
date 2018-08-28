@@ -8,6 +8,7 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 		$parametros_mal = array();
 		if ( Tools::isSubmit('registrar_profesional')) {
 			$parametros = Tools::getAllValues();
+			$this->context->smarty->assign('valores', $parametros);
 			foreach ($parametros as $key => $value) {
 				if (empty($value)) {
 					array_push($parametros_mal, $key);
