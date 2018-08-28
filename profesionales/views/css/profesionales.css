@@ -6,3 +6,6 @@ campo{
   display: block;
   margin:7px;
 }
+.mal {
+  border: 1px solid red;
+}

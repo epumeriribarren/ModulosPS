@@ -7,10 +7,9 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 		$redirect = true;
 		$parametros_mal = array();
 		if ( Tools::isSubmit('registrar_profesional')) {
-			$parametros = Tools::isSubmit('registrar_profesional');
-			foreach ($parametros as $key => $parametro) {
-				if (empty($parametro)) {
-					$redirect = false;
+			$parametros = Tools::getAllValues();
+			foreach ($parametros as $key => $value) {
+				if (empty($value)) {
 					array_push($parametros_mal, $key);
 				}
 			}
@@ -71,10 +70,18 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 				'name'	 => 'telefono'
 			),
 		);
-		$this->context->controller->addCSS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/css/profesionales.css')
+		$this->context->controller->addCSS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/css/profesionales.css');
 		$this->context->smarty->assign('parametros', $form_fields);
 		$this->context->smarty->assign('parametros_mal',$parametros_mal);
 		$this->setTemplate('module:profesionales/views/templates/front/profesionales.tpl');
+	}
+
+	public function escribirLog($text)
+	{
+		$path = $_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/controllers/front/log.log';
+		$file = fopen($path, "a");
+		fwrite($file, $text);
+		fclose($file);
 	}
 }
 ?>
