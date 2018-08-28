@@ -9,3 +9,17 @@ campo{
 .mal {
   border: 1px solid red;
 }
+#derecha {
+  width: 50%;
+  display: inline-block;
+  height: 100%;
+}
+#izquierda {
+  width: 40%;
+  display: inline-block;
+  
+}
+#main {
+  display: block;
+  position: relative;
+}
