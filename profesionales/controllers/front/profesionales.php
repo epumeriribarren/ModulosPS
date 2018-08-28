@@ -63,9 +63,9 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 				'name'	 => 'dfiscal'
 			),
 			array(
-				'titulo' => 'Provincia',
+				'titulo' => 'Ciudad',
 				'tipo'	 => 'text',
-				'name'	 => 'provincia'
+				'name'	 => 'ciudad'
 			),
 			array(
 				'titulo' => 'Código postal',
