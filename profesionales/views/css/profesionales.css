@@ -9,6 +9,13 @@ campo{
 .mal {
   border: 1px solid red;
 }
+.mal::after {
+  content: "\f071";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
 #derecha {
   width: 50%;
   display: inline-table;

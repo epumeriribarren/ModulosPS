@@ -20,12 +20,13 @@
 														{foreach $parametro.options as $option}
 															<option value="{$option}" {if isset($valores)}{if {$valores.{$parametro.name}}=={$option}} selected="selected"{/if}{/if}>{$option}</option>
 														{/foreach}
-								 </select>
+								 </select>{if $parametro.name|in_array:$parametros_mal}<span class="glyphicon glyphicon-exclamation-sign"></span>{/if}
 							{elseif $parametro.tipo == 'radio'}
 								<input name="{$parametro.name}" {if isset($valores)}{if {$valores.{$parametro.name}}=="Si"}checked=""{/if}{else}checked=""{/if} value="Si" type="{$parametro.tipo}" {if $parametro.name|in_array:$parametros_mal}class="mal"{/if}><span class="radio-text">Si</span>
 								<input name="{$parametro.name}" {if isset($valores)}{if {$valores.{$parametro.name}}=="No"}checked=""{/if}{/if}value="No" type="{$parametro.tipo}" {if $parametro.name|in_array:$parametros_mal}class="mal"{/if}><span class="radio-text">No</span>
+								{if $parametro.name|in_array:$parametros_mal}<span class="glyphicon glyphicon-exclamation-sign"></span>{/if}
 							{else}
-								<input type="{$parametro.tipo}" name="{$parametro.name}" {if $parametro.name|in_array:$parametros_mal}class="mal"{/if} {if isset($valores) } value="{$valores.{$parametro.name}}" {/if}/>
+								<input type="{$parametro.tipo}" name="{$parametro.name}" {if $parametro.name|in_array:$parametros_mal}class="mal"{/if} {if isset($valores) } value="{$valores.{$parametro.name}}" {/if}/>{if $parametro.name|in_array:$parametros_mal}<span class="glyphicon glyphicon-exclamation-sign"></span>{/if}
 							{/if}
 						</valor>
 					</campo>
