@@ -71,7 +71,7 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 				'name'	 => 'telefono'
 			),
 		);
-		$this->context->smarty->
+		$this->context->controller->addCSS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/css/profesionales.css')
 		$this->context->smarty->assign('parametros', $form_fields);
 		$this->context->smarty->assign('parametros_mal',$parametros_mal);
 		$this->setTemplate('module:profesionales/views/templates/front/profesionales.tpl');
