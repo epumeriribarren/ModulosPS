@@ -1,7 +1,7 @@
 {extends file='page.tpl'}
 	{block name='page_content_container'}
 		<contenido id="izquierda">
-			<img src="https://www.barcelonaled.com/modules/formularios/views/img/professionals.png" alt="Profesionales">
+			<img id="imagenpro" src="https://www.barcelonaled.com/modules/formularios/views/img/professionals.png" alt="Profesionales">
 		</contenido>
 		<contenido id="derecha">
 			<h2>Formulario para profesionales</h2>
