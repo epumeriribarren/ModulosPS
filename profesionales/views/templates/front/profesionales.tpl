@@ -1,5 +1,8 @@
 {extends file='page.tpl'}
 	{block name='page_content_container'}
+		<contenido id="izquierda">
+			<img src="https://www.barcelonaled.com/modules/formularios/views/img/professionals.png" alt="Profesionales">
+		</contenido>
 		<h2>Formulario para profesionales</h2>
 		<form id="pro" action="/module/profesionales/profesionales?registrar_profesional" method="post">
 			{foreach $parametros as $parametro}
