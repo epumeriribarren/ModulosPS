@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+ <name>responsive_home</name>
+ <displayName>
+ <![CDATA[ResponsiveHome]]>
+ </displayName>
+ <version>
+ <![CDATA[0.9.9]]>
+ </version>
+ <description>
+ <![CDATA[Añade un javascript responsive al home.]]>
+ </description>
+ <author>
+ <![CDATA[informatico@barcelonaled.com]]>
+ </author>
+ <tab>
+ <![CDATA[Design]]>
+ </tab>
+ <confirmUninstall>
+ <![CDATA[¿Estas seguro de desinstalar este modulo?]]>
+ </confirmUninstall>
+ <is_configurable>0</is_configurable>
+ <need_instance>0</need_instance>
+ <limited_countries></limited_countries>
+</module>
