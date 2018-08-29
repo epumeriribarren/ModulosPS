@@ -1,6 +1,6 @@
 <?php
 if(!deined('_PS_VERSION_')){
-	EXIT;
+	exit;
 }
 class ResponsiveHome extends Module{
 	public function __construct(){
