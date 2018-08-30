@@ -24,6 +24,21 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 		}
 		$form_fields = array(
 			array(
+				'titulo' => 'Nombre',
+				'tipo'	 => 'text',
+				'name'	 => 'nombre'
+			),
+			array(
+				'titulo' => 'Apellidos',
+				'tipo'	 => 'text',
+				'name'	 => 'apellidos'
+			),
+			array(
+				'titulo' => 'Teléfono',
+				'tipo'	 => 'tel',
+				'name'	 => 'telefono'
+			),
+			array(
 				'titulo' => 'Nombre de la Empresa',
 				'tipo'	 => 'text',
 				'name'	 => 'nombre'
@@ -34,53 +49,21 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 				'name'	 => 'cif'
 			),
 			array(
-				'titulo' => 'Tipo de profesional',
-				'tipo'	 => 'select',
-				'id'	 => 'tipo-profesional',
-				'name'	 => 'tipo',
-				'options' => array(
-								'',
-								'Distribuidor',
-								'Instalador',
-								'Arquitecto',
-								'Decorador',
-								'Empresa'
-							)
+				'titulo' => 'Dirección de correo electrónico',
+				'tipo'	 => 'email',
+				'name'	 => 'email'
 			),
 			array(
-				'titulo' => '¿Eres autónomo?',
-				'tipo'	 => 'radio',
-				'name'	 => 'eres_autonomo'
-			),
-			array(
-				'titulo' => '¿Necesitas que se te aplique el recargo de equivalencia?',
-				'tipo'	 => 'radio',
-				'name'	 => 'surcharge_equivalence'
-			),
-			array(
-				'titulo' => 'Dirección de facturación',
-				'tipo'	 => 'text',
-				'name'	 => 'dfiscal'
-			),
-			array(
-				'titulo' => 'Ciudad',
-				'tipo'	 => 'text',
-				'name'	 => 'ciudad'
-			),
-			array(
-				'titulo' => 'Código postal',
-				'tipo'	 => 'text',
-				'name'	 => 'cpostal'
-			),
-			array(
-				'titulo' => 'Teléfono',
-				'tipo'	 => 'tel',
-				'name'	 => 'telefono'
+				'titulo' => 'Contraseña',
+				'tipo'	 => 'password',
+				'name'	 => 'password'
 			),
 		);
 		$this->context->controller->addCSS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/css/profesionales.css');
+		$this->context->controller->addJS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/js/profesionales.js');
 		$this->context->smarty->assign('parametros', $form_fields);
 		$this->context->smarty->assign('parametros_mal',$parametros_mal);
+		$this->context->smarty->assign('layout','layouts/layout-left-column.tpl');
 		$this->setTemplate('module:profesionales/views/templates/front/profesionales.tpl');
 	}
 

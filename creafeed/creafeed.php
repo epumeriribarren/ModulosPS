@@ -108,7 +108,7 @@ class CreaFeed extends Module {
                     	'g:image_link' =>	,
                     	'g:condition' =>	$productObj->condition,
                     	'g:additional_image_link' =>	,
-                    	'g:product_type' =>	,
+                    	'g:product_type' =>	$this->arbolDeCategorias($product->id_category_default),
                     	'g:google_product_category' =>	,
                     	'g:quantity' =>	,
                     	'g:availability' =>	,
@@ -127,6 +127,15 @@ class CreaFeed extends Module {
     		}
     	}
     	return $output
+    }
+
+    public function arbolDeCategorias($id_category) {
+        $categoriaObj = new Category($id_category);
+        $arbol = $categoriaObj->name;
+        while ( $categoriaObj->id_parent != 1 ) {
+            $categoriaObj = new Category($id_category);
+            $arbol .= '  >  '.$categoriaObj->name;
+        }
     }
 
     public function htmlToText($html) {

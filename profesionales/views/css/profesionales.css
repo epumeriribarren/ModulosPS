@@ -1,4 +1,4 @@
-titulo{
+/* titulo{
   width:50%;
   display: inline-block;
   }
@@ -16,17 +16,7 @@ campo{
   font-weight: normal;
   text-decoration: inherit;
 }
-#derecha {
-  width: 50%;
-  display: inline-table;
-  height: 100%;
-}
-#izquierda {
-  width: 40%;
-  display: inline-table;
-  
-}
 #main {
   display: block;
   position: relative;
-}
+} */

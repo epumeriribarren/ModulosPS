@@ -4,21 +4,18 @@ if(!defined('_PS_VERSION_')){
 }
 class responsive_home extends Module{
 	public function __construct(){
-		$this->name='responsive_home';//mismo nombre de la carpeta
-		$this->tab='Design';//en que categoria va
+		$this->name='responsive_home'; //nombre del módulo el mismo que la carpeta y la clase.
+		$this->tab='Design'; // pestaña en la que se encuentra en el backoffice.
 		$this->version="0.9.9";//version del modulo
 		$this->author='Andre Verdejo';//autor del modulo
-		$this->need_instance=0;//Un 0 porn que no necessito cargar una classe en el modulo
-		$this->ps_versions_compliancy=array('min' => '1.7.x.x', 'max' => _PS_VERSION_);
-		/*									vesion minima para que funcione en un prestashop
-		*/
-		$this->bootstrap=true;
-		//si usa boottrap
-		parent::__construct();
-		//llamanado a la funcion del padre
-		$this->displayName=$this->l('ResponsiveHome');
-		$this->description=$this->l('Añade un javascript responsive al home.');
-		$this->confirmUninstall=$this->l('¿Estas seguro de desinstalar este modulo?');
+		$this->need_instance=0; //si no necesita cargar la clase en la página módulos,1 si fuese necesario.
+		$this->ps_versions_compliancy=array('min' => '1.7.x.x', 'max' => _PS_VERSION_); //las versiones con las que el módulo es compatible.
+		$this->bootstrap=true; //si usa bootstrap plantilla responsive.
+		parent::__construct(); //llamada al constructor padre.
+		$this->displayName=$this->l('ResponsiveHome'); // Nombre del módulo
+		$this->description=$this->l('Añade un javascript responsive al home.'); //Descripción del módulo
+		$this->confirmUninstall=$this->l('¿Estas seguro de desinstalar este modulo?'); //mensaje de alerta al desinstalar el módulo.
+	}
 		}
 	public function install(){
 		return parent::install() &&
