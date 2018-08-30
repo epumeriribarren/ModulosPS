@@ -2,7 +2,7 @@
 if(!defined('_PS_VERSION_')){
 	exit;
 }
-class ResponsiveHome extends Module{
+class responsive_home extends Module{
 	public function __construct(){
 		$this->name='responsive_home';//mismo nombre de la carpeta
 		$this->tab='Design';//en que categoria va
@@ -22,12 +22,18 @@ class ResponsiveHome extends Module{
 		}
 	public function install(){
 		return parent::install() &&
-			   registerHook('top') &&
-			   registerHook('header');
+			   $this->registerHook('top') &&
+			   $this->registerHook('header');
 			   //registrando en 2 hook()
 	}
-	public function hookHeadder(){
-		$this->context->controller->registerJavascript('modules-responsivehome', 'module/'.$this->name.'/responsivehome.js');
+
+	public function uninstall() {
+		return parent::uninstall() &&
+			   $this->unregisterHook('top') &&
+			   $this->unregisterHook('header');
+	}
+	public function hookHeader(){
+		$this->context->controller->registerJavascript('modules-responsivehome', 'modules/'.$this->name.'/views/js/responsivehome.js');
 		//Instalar este javascript en el hook;
 	}
 }
