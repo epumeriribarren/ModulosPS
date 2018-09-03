@@ -1,22 +1,15 @@
-/* titulo{
-  width:50%;
-  display: inline-block;
-  }
-campo{
-  display: block;
-  margin:7px;
-}
 .mal {
   border: 1px solid red;
 }
-.mal::after {
-  content: "\f071";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
+.fa-exclamation-triangle {
+  position: absolute;
+  top: 7px;
+  right: 20px;
+  display: inline-block;
 }
-#main {
-  display: block;
-  position: relative;
-} */
+.fa-exclamation-triangle::before {
+  font-size: 24px;
+}
+.form-control {
+  display: inline-block;
+}

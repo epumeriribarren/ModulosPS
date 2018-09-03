@@ -16,7 +16,7 @@ class responsive_home extends Module{
 		$this->description=$this->l('Añade un javascript responsive al home.'); //Descripción del módulo
 		$this->confirmUninstall=$this->l('¿Estas seguro de desinstalar este modulo?'); //mensaje de alerta al desinstalar el módulo.
 	}
-		}
+	
 	public function install(){
 		return parent::install() &&
 			   $this->registerHook('top') &&

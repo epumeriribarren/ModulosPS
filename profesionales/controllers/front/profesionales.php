@@ -5,21 +5,62 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 	{
 		parent::initContent();
 		$redirect = true;
+		$crear_cuenta = true;
 		$parametros_mal = array();
+		$error = '';
 		if ( Tools::isSubmit('registrar_profesional')) {
+			$this->escribirLog('Empieza el proceso');
 			$parametros = Tools::getAllValues();
-			$this->context->smarty->assign('valores', $parametros);
+			$this->escribirLog(count($parametros));
 			foreach ($parametros as $key => $value) {
-				if (empty($value)) {
-					array_push($parametros_mal, $key);
+				if ($key == 'registrar_profesional') {
+					continue;
+				}
+				try {
+					if (empty($value)) {
+						$this->escribirLog('Campo vacio encontrado: '.$key);
+						$redirect = false;
+						$crear_cuenta = false;
+						array_push($parametros_mal, $key);
+					} else {
+						$this->escribirLog($key.': '.$value);
+					}
+				} catch (Exception $e) {
+					$this->escribirLog($e->getMessage());
 				}
 			}
 
-			if ( !ereg("([0-9]{5})", $parametros['cpostal'])){
-				array_push($parametros_mal, 'cpostal');
-			}
-			if ( !ereg("([0-9]{9})", $parametros['telefono'])){
+			$this->escribirLog('Vamos a comprobar el telefono');
+			if ( !preg_match("([0-9]{9})", $parametros['telefono'])){
 				array_push($parametros_mal, 'telefono');
+				$crear_cuenta = false;
+				$redirect = false;
+			}
+
+			$this->escribirLog('Vamos a comprobar si podemos crear la cuenta');
+			if ($crear_cuenta) {
+				try {
+					$this->escribirLog('Vamos a intentar crear la cuenta');
+					$resultado = $this->crearCuenta($parametros);
+					$this->escribirLog('No hubo error');
+				} catch ( Exception $e ) {
+					$this->escribirLog('Petó: '.$e->getMessage());
+					$resultado = false;
+				}
+				if (!$resultado) {
+					$this->escribirLog('La cuenta no se pudo crear');
+					$redirect = false;
+					$error = "No se pudo crear la cuenta.";
+				}
+			}
+			$this->context->smarty->assign('valores', $parametros);
+			if ($error != '') {
+				$this->escribirLog('Hubo errores');
+				$this->context->smarty->assign('error', $error);
+			}
+			if ($redirect) {
+				$this->escribirLog('Todo fué dabuten');
+				$this->redirectWithNotifications('index.php');
 			}
 		}
 		$form_fields = array(
@@ -41,7 +82,7 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 			array(
 				'titulo' => 'Nombre de la Empresa',
 				'tipo'	 => 'text',
-				'name'	 => 'nombre'
+				'name'	 => 'nombre_empresa'
 			),
 			array(
 				'titulo' => 'CIF/NIF de la empresa',
@@ -60,7 +101,6 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 			),
 		);
 		$this->context->controller->addCSS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/css/profesionales.css');
-		$this->context->controller->addJS($_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/views/js/profesionales.js');
 		$this->context->smarty->assign('parametros', $form_fields);
 		$this->context->smarty->assign('parametros_mal',$parametros_mal);
 		$this->context->smarty->assign('layout','layouts/layout-left-column.tpl');
@@ -71,8 +111,20 @@ class profesionalesprofesionalesModuleFrontController extends ModuleFrontControl
 	{
 		$path = $_SERVER['DOCUMENT_ROOT'] . '/modules/profesionales/controllers/front/log.log';
 		$file = fopen($path, "a");
-		fwrite($file, $text);
+		fwrite($file, $text."\n");
 		fclose($file);
+	}
+
+	public function crearCuenta($parametros) 
+	{
+		$cuenta = new CustomerCore();
+		$cuenta->firstname = $parametros['nombre'];
+		$cuenta->lastname = $parametros['apellidos'];
+		$cuenta->email = $parametros['email'];
+		$cuenta->company = $parametros['nombre_empresa'];
+		$cuenta->passwd = $parametros['password'];
+		$cuenta->id_default_group = 7;
+		return $cuenta->add();
 	}
 }
 ?>
